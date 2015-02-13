@@ -424,31 +424,31 @@ function constraints(filePath)
 
 function testForBlacklist(areacode,funcName,args)
 
-{
-			var testCase="";
-			//console.log("hi" + args);
-			var argsAfterSplit=args.split(',');
-			var code =argsAfterSplit[0].substring(1,4);
-			//console.log("hello"+argsAfterSplit[0]);
-			var phoneNumb = "";
-			
-			var randomphonenumber=faker.phone.phoneNumberFormat().toString();
-			if(areacode)
+	{
+		var testCase="";
+		//console.log("hi" + args);
+		var argsAfterSplit=args.split(',');
+		var code =argsAfterSplit[0].substring(1,4);
+		//console.log("hello"+argsAfterSplit[0]);
+		var phoneNumb = "";
+		
+		var randomphonenumber=faker.phone.phoneNumberFormat().toString();
+		if(areacode)
 			{
 				phoneNumb=code + randomphonenumber.substring(3,12);
 				console.log(phoneNumb);
 			}
-			else
+		else
 			{
 				phoneNumb = randomphonenumber;
 			}
-			phoneNumb="'"+phoneNumb+"'";
-			var finalArgs = "";
-			console.log(phoneNumb);
-			finalArgs =  phoneNumb;
-			testCase+="subject.{0}({1});\n".format(funcName, finalArgs);
-			return testCase;
-};
+		phoneNumb="'"+phoneNumb+"'";
+		var finalArgs = "";
+		console.log(phoneNumb);
+		finalArgs =  phoneNumb;
+		testCase+="subject.{0}({1});\n".format(funcName, finalArgs);
+		return testCase;
+	};
 
 function traverse(object, visitor) 
 {
