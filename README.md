@@ -7,15 +7,25 @@ Coverage Report
 -----------------------------
 The uncovered items in the given code have been covered and the automation of new tests for 100% branch and statement coverage has been achieved.    
 
+> Coverage Summary as shown below:
+
+![Summary](https://github.com/mahasanath/TestGeneration/blob/master/coverage_summary.JPG)       
+
+
 
 ### Below are the snapshots of the Test Generation Result:   
-
+-----------------------------------------------------------------------------------
 
 #### Screenshots
----------------------------------------------------------       
-![Alt text][id1]    
+---------------------------------------------------------         
 
-![Alt text][id2]     
+![Alt text][id1]       
+          
+          
+
+![Alt text][id2]          
+        
+        
 
 ![Alt text][id3]     
 
