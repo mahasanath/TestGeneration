@@ -13,15 +13,10 @@ The uncovered items in the given code have been covered and the automation of ne
 
 #### Screenshots
 ---------------------------------------------------------       
-=============================== Coverage summary ===============================
+![Alt text][id1]
+![Alt text][id2]
+![Alt text][id3]
 
-![image1](https://github.com/mahasanath/TestGeneration/blob/master/codecoverage_testgen.JPG)    
-
-=========================================================================================    
-
-
-![image2](https://github.com/mahasanath/TestGeneration/blob/master/coverage_Subjectjs.JPG)     
-
-The console when generating the test.js and the coverage report for subject.js:    
-
-![image3](https://github.com/mahasanath/TestGeneration/blob/master/coverage_console.JPG)
+[id1]:https://github.com/mahasanath/TestGeneration/blob/master/codecoverage_testgen.JPG
+[id2]:https://github.com/mahasanath/TestGeneration/blob/master/coverage_Subjectjs.JPG
+[id3]:https://github.com/mahasanath/TestGeneration/blob/master/coverage_console.JPG
