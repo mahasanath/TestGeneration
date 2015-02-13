@@ -110,7 +110,6 @@ function generateTestCases()
 		console.log(args)
 
 
-
 		 if( pathExists || fileWithContent )
 		{
 			content += generateMockFsTestCases(pathExists,bufSize,fileWithContent,funcName, 'CheckEmptyBuf');
@@ -206,12 +205,11 @@ function generateMockFsTestCases (pathExists,bufSize,fileWithContent,funcName,ar
 	if( pathExists && !bufSize)
 	{
 		for (var attrname in mockFileLibrary.fileWithContent) { mergedFS[attrname] = mockFileLibrary.fileWithContent[attrname]; }
-			mergedFS['pathContent']['file1']="";
+			mergedFS['pathContent']['file1']='';
 
 	}
 
 }
-
 
 
 	testCase += 
@@ -235,19 +233,19 @@ function testForInc(arg_one,arg_two,funcName,args)
 		{
 			//var numb = new Random(Random.engines.mt19937().seedWithArray([0x12345678, 0x90abcdef]))
 			//console.log(numb);
-			var randnumber = Math.floor(Math.random()*5);
+			var randnumber = Math.floor(Math.random()*6);
 			var numb=(argsAfterSplit[0]) - randnumber;
 			argsAfterSplit[0]=numb;
 		}
 		if(arg_two){
 			if(argsAfterSplit[1]=="undefined")
 			{
-				var randnumb2 = Math.floor(Math.random()*5);
+				var randnumb2 = Math.floor(Math.random()*6);
 				argsAfterSplit[1]= randnumb2;
 			}
 			else
 			{
-				var randnumb2 = Math.floor(Math.random()*5);
+				var randnumb2 = Math.floor(Math.random()*6);
 				var numb2 = (argsAfterSplit[1]) - randnumb2;
 				argsAfterSplit[1]= numb2;
 			}
@@ -431,30 +429,30 @@ function constraints(filePath)
 
 function testForBlacklist(areacode,funcName,args)
 
-{
-			var testCase="";
-			//console.log("hi" + args);
-			var argsAfterSplit=args.split(',');
-			var code =argsAfterSplit[0].substring(1,4);
-			//console.log("hello"+argsAfterSplit[0]);
-			var phoneNumb = "";
-			
-			var randomphonenumber=faker.phone.phoneNumberFormat().toString();
-			if(areacode)
+	{
+		var testCase="";
+		//console.log("hi" + args);
+		var argsAfterSplit=args.split(',');
+		var code =argsAfterSplit[0].substring(1,4);
+		//console.log("hello"+argsAfterSplit[0]);
+		var phoneNumb = "";
+		
+		var randomphonenumber=faker.phone.phoneNumberFormat().toString();
+		if(areacode)
 			{
 				phoneNumb=code + randomphonenumber.substring(3,12);
 				console.log(phoneNumb);
 			}
-			else
+     	else
 			{
 				phoneNumb = randomphonenumber;
 			}
-			phoneNumb="'"+phoneNumb+"'";
-			var finalArgs = "";
-			console.log(phoneNumb);
-			finalArgs =  phoneNumb;
-			testCase+="subject.{0}({1});\n".format(funcName, finalArgs);
-			return testCase;
+		phoneNumb="'"+phoneNumb+"'";
+		var finalArgs = "";
+		console.log(phoneNumb);
+		finalArgs =  phoneNumb;
+		testCase+="subject.{0}({1});\n".format(funcName, finalArgs);
+	return testCase;
 };
 
 function traverse(object, visitor) 
