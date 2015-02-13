@@ -85,7 +85,7 @@ function generateTestCases()
 		var fileWithContent = _.some(constraints, {mocking: 'fileWithContent' });
 		var pathExists      = _.some(constraints, {mocking: 'fileExists' });
 		var fileWithNoContent = _.some(constraints, {mocking: 'fileWithNoContent'});
-
+		var bufSize = _.some(constraints, {ident:'buf'});
 		var areacode = _.some(constraints,{ident:'phoneNumber'});
 		var arg_one = _.some(constraints,{ident:'p'});
 		var arg_two = _.some(constraints,{ident:'q'});
@@ -113,12 +113,12 @@ function generateTestCases()
 
 		 if( pathExists || fileWithContent )
 		{
-			content += generateMockFsTestCases(pathExists,fileWithContent,funcName, 'CheckEmptyBuf');
-			content += generateMockFsTestCases(pathExists,fileWithContent,funcName, args);
+			content += generateMockFsTestCases(pathExists,bufSize,fileWithContent,funcName, 'CheckEmptyBuf');
+			content += generateMockFsTestCases(pathExists,bufSize,fileWithContent,funcName, args);
 			// Bonus...generate constraint variations test cases....
-			content += generateMockFsTestCases(!pathExists,!fileWithContent,funcName, args);
-			content += generateMockFsTestCases(pathExists,!fileWithContent,funcName, args);
-			content += generateMockFsTestCases(!pathExists,fileWithContent,funcName, args);
+			content += generateMockFsTestCases(!pathExists,bufSize,!fileWithContent,funcName, args);
+			content += generateMockFsTestCases(pathExists,!bufSize,!fileWithContent,funcName, args);
+			content += generateMockFsTestCases(!pathExists,bufSize,fileWithContent,funcName, args);
 			
 		}
 
@@ -128,6 +128,7 @@ function generateTestCases()
 			content+=testForInc(arg_one,arg_two,funcName,args);
 			content+=testForInc(arg_one,!arg_two,funcName,args);
 			content+=testForInc(!arg_one,arg_two,funcName,args);
+			content+= testForInc(!arg_one,!arg_two,funcName,args);
 		}
 		
 		else if(normtrue || normfalse)
@@ -175,7 +176,7 @@ function generateTestCases()
 
 }
 
-function generateMockFsTestCases (pathExists,fileWithContent,funcName,args) 
+function generateMockFsTestCases (pathExists,bufSize,fileWithContent,funcName,args) 
 {
 	var testCase = "";
 	// Insert mock data based on constraints.
@@ -202,6 +203,12 @@ function generateMockFsTestCases (pathExists,fileWithContent,funcName,args)
 		{
 			for (var attrname in mockFileLibrary.fileWithNoContent) { mergedFS[attrname] = mockFileLibrary.fileWithNoContent[attrname]; }
 		}
+	if( pathExists && !bufSize)
+	{
+		for (var attrname in mockFileLibrary.fileWithContent) { mergedFS[attrname] = mockFileLibrary.fileWithContent[attrname]; }
+			mergedFS['pathContent']['file1']="";
+
+	}
 
 }
 
@@ -328,7 +335,7 @@ function constraints(filePath)
 								
 									functionConstraints[funcName].constraints.push(
 											{
-												ident: child.left.name,
+												ident: child.left.object.name,
 												value: rightHand
 											});
 
@@ -424,31 +431,31 @@ function constraints(filePath)
 
 function testForBlacklist(areacode,funcName,args)
 
-	{
-		var testCase="";
-		//console.log("hi" + args);
-		var argsAfterSplit=args.split(',');
-		var code =argsAfterSplit[0].substring(1,4);
-		//console.log("hello"+argsAfterSplit[0]);
-		var phoneNumb = "";
-		
-		var randomphonenumber=faker.phone.phoneNumberFormat().toString();
-		if(areacode)
+{
+			var testCase="";
+			//console.log("hi" + args);
+			var argsAfterSplit=args.split(',');
+			var code =argsAfterSplit[0].substring(1,4);
+			//console.log("hello"+argsAfterSplit[0]);
+			var phoneNumb = "";
+			
+			var randomphonenumber=faker.phone.phoneNumberFormat().toString();
+			if(areacode)
 			{
 				phoneNumb=code + randomphonenumber.substring(3,12);
 				console.log(phoneNumb);
 			}
-		else
+			else
 			{
 				phoneNumb = randomphonenumber;
 			}
-		phoneNumb="'"+phoneNumb+"'";
-		var finalArgs = "";
-		console.log(phoneNumb);
-		finalArgs =  phoneNumb;
-		testCase+="subject.{0}({1});\n".format(funcName, finalArgs);
-		return testCase;
-	};
+			phoneNumb="'"+phoneNumb+"'";
+			var finalArgs = "";
+			console.log(phoneNumb);
+			finalArgs =  phoneNumb;
+			testCase+="subject.{0}({1});\n".format(funcName, finalArgs);
+			return testCase;
+};
 
 function traverse(object, visitor) 
 {
