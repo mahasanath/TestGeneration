@@ -13,9 +13,12 @@ The uncovered items in the given code have been covered and the automation of ne
 
 #### Screenshots
 ---------------------------------------------------------       
-![Alt text][id1]
-![Alt text][id2]
-![Alt text][id3]
+![Alt text][id1]    
+
+![Alt text][id2]     
+
+![Alt text][id3]     
+
 
 [id1]:https://github.com/mahasanath/TestGeneration/blob/master/codecoverage_testgen.JPG
 [id2]:https://github.com/mahasanath/TestGeneration/blob/master/coverage_Subjectjs.JPG
