@@ -21,12 +21,14 @@ The uncovered items in the given code have been covered and the automation of ne
 
 ![Alt text][id1]       
           
-          
+        
+ > A screenshot of the Coverage report that is generated    
+ 
 
 ![Alt text][id2]          
         
        
- > Rest of subject.js.html     
+ > Rest of Coverage report ( subject.js.html )
  
 
 ![Alt text][id3]     
