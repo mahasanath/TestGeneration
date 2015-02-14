@@ -28,8 +28,13 @@ The uncovered items in the given code have been covered and the automation of ne
         
 
 ![Alt text][id3]     
-
-
+   
+   
+   
+![Alt text][id4]     
+    
+    
 [id1]:https://github.com/mahasanath/TestGeneration/blob/master/codecoverage_testgen.JPG
 [id2]:https://github.com/mahasanath/TestGeneration/blob/master/coverage_Subjectjs.JPG
-[id3]:https://github.com/mahasanath/TestGeneration/blob/master/coverage_console.JPG
+[id4]:https://github.com/mahasanath/TestGeneration/blob/master/coverage_console.JPG
+[id3]:https://github.com/mahasanath/TestGeneration/blob/master/subjectjs.JPG
