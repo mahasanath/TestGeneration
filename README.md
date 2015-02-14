@@ -25,7 +25,9 @@ The uncovered items in the given code have been covered and the automation of ne
 
 ![Alt text][id2]          
         
-        
+       
+ > Rest of subject.js.html     
+ 
 
 ![Alt text][id3]     
    
